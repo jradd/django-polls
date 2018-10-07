@@ -27,6 +27,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'polls',
+    'db_file_storage',
+        'django_nose',
+        # project
+        'form_wizard_example',
+    'model_filefields_example',
 ]
 
 MIDDLEWARE = [
@@ -110,12 +115,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/srv/web/app/static',
-    ]
+#STATICFILES_DIRS = [
+#    os.path.join(BASE_DIR, "static"),
+#    '/srv/web/app/static',
+#    ]
 
-STATIC_URL = 'static'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join('static')
 
 
@@ -131,3 +136,6 @@ CORS_ALLOW_HEADERS = (
     'authorization',
     'x-csrftoken'
 )
+
+DEFAULT_FILE_STORAGE = 'db_file_storage.storage.DatabaseFileStorage'
+

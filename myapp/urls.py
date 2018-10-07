@@ -13,7 +13,23 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
     path('robots\.txt', lambda r: HttpResponse('User-agent: *\nDisallow: /', content_type='text/plain')),
-    path('', TemplateView.as_view(template_name="home.html")),
+    path('admin/', admin.site.urls),
+    path(
+        'home',
+        TemplateView.as_view(template_name='home.html'),
+        name='home'
+    ),
+    path(
+        'files/',
+        include('db_file_storage.urls')
+    ),
+    path(
+        'model_files/',
+        include('model_filefields_example.urls', namespace='model_files')
+    ),
+    path(
+        'form_wizard/',
+include('form_wizard_example.urls', namespace='form_wizard'))
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #if settings.DEBUG:
